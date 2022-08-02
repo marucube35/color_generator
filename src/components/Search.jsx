@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
-function Search() {
+function Search({ context }) {
+    const { number, onChange, onClick } = useContext(context)
+
     return (
         <form>
             <input
                 type="text"
                 placeholder="Enter the number of colors that you want to generate"
-            ></input>
-            <button type="button">Generate</button>
+                value={number}
+                onInput={onChange}
+            ></input>   
+            <button type="button" onClick={onClick}>
+                Generate
+            </button>
         </form>
     )
 }

@@ -12,13 +12,15 @@ html {
 }
 
 .App {
-    @include flex(column, space-between, center);
+    @include flex(column, flex-start, center);
     height: 100vh;
+    background-color: #f9fbfe;
 }
 
 header {
     @include flex(column, center, center);
     width: 100%;
+    margin-top: 20px;
 
     h1 {
         @include font(60px, 500);
