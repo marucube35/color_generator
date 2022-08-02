@@ -1,10 +1,22 @@
 import React from 'react'
 
+const LIGHT_LIMIT = 13421772
+
+function generateColorStyle(colorString) {
+    const decimalValue = parseInt(colorString.slice(1), 16)
+
+    return {
+        color: decimalValue > LIGHT_LIMIT ? '#000' : '#fff',
+        backgroundColor: colorString
+    }
+}
+
 function Main({ colors, clipboard, onClick, onMouseLeave }) {
     return (
         <main>
             {colors.map((color, index) => {
-                const style = { backgroundColor: color }
+                const style = generateColorStyle(color)
+
                 return (
                     <div
                         className="color-card"

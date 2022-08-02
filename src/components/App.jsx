@@ -31,7 +31,10 @@ function App() {
         return colors
     }
     function randomColor() {
-        return '#' + Math.floor(Math.random() * 16777215).toString(16)
+        let randomColor = Math.floor(Math.random() * 16777215).toString(16)
+        randomColor = randomColor.length < 6 ? '0' + randomColor : randomColor
+
+        return '#' + randomColor
     }
 
     function copyClick(color) {
