@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic');
+@import './mixins.scss';
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.App {
+    @include flex(column, space-between, center);
+    height: 100vh;
+}
+
+header {
+    @include flex(column, center, center);
+    width: 100%;
+
+    h1 {
+        @include font(60px, 500);
+    }
+    p {
+        @include font(40px, 300);
+    }
+}
+
+form {
+    @include flex(row, space-between, center);
+    width: 80%;
+    padding: 30px 0;
+    margin: 15px 0;
+
+    input {
+        @include input(8px);
+        @include font(20px, 300);
+        width: 75%;
+        padding: 15px 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    input:hover,
+    input:focus {
+        background-color: #eadef5;
+    }
+    input::placeholder {
+        @include font(14px);
+    }
+
+    button {
+        @include button(8px);
+        width: 20%;
+        color: #fff;
+        font-size: 20px;
+        padding: 15px 35px;
+        text-transform: uppercase;
+        background-color: #595dff;
+    }
+    button:hover {
+        opacity: 0.8;
+        cursor: pointer;
+    }
+}
