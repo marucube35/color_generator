@@ -1,14 +1,24 @@
 import React from 'react'
 
-function Main({ colors }) {
+function Main({ colors, clipboard, onClick, onMouseLeave }) {
     return (
         <main>
             {colors.map((color, index) => {
                 const style = { backgroundColor: color }
                 return (
-                    <div style={style} key={index}>
+                    <div
+                        className="color-card"
+                        style={style}
+                        key={index}
+                        onMouseLeave={onMouseLeave}
+                    >
                         <small>{color}</small>
-                        <i className="fas fa-clipboard"></i>
+                        <div
+                            className={clipboard}
+                            onClick={() => onClick(color)}
+                        >
+                            <i className="fas fa-clipboard "></i>
+                        </div>
                     </div>
                 )
             })}

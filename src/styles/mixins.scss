@@ -1,14 +1,27 @@
-@mixin flex($direction: row, $justify: center, $align: center) {
+@mixin flex($direction: row, $justify: center, $align: $justify, $wrap: wrap) {
     display: flex;
     flex-direction: $direction;
     justify-content: $justify;
     align-items: $align;
-    flex-wrap: wrap;
+    flex-wrap: $wrap;
+}
+
+@mixin position($position: absolute, $top: 0, $left: 0, $right: 0, $bottom: 0) {
+    position: $position;
+    top: $top;
+    left: $left;
+    right: $right;
+    bottom: $bottom;
 }
 
 @mixin font($size, $weight: normal) {
     font-size: $size;
     font-weight: $weight;
+}
+
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
 }
 
 @mixin input($bdrs) {

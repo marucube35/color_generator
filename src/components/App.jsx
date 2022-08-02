@@ -1,12 +1,12 @@
 import Header from './Header'
 import Main from './Main'
 import '../styles/index.scss'
-import { createContext, useRef, useState } from 'react'
+import { useState } from 'react'
 
 function App() {
     const [number, setNumber] = useState('')
     const [colors, setColors] = useState([])
-    const context = createContext()
+    const [clipboard, setClipboard] = useState('copy')
 
     function onChange(e) {
         const value = e.target.value
@@ -34,12 +34,28 @@ function App() {
         return '#' + Math.floor(Math.random() * 16777215).toString(16)
     }
 
+    function copyClick(color) {
+        if (clipboard === 'copy') {
+            setClipboard('copied')
+            copy(color)
+        }
+    }
+    function resetClipboard() {
+        setClipboard('copy')
+    }
+    function copy(text) {
+        navigator.clipboard.writeText(text)
+    }
+
     return (
         <div className="App">
-            <context.Provider value={{ number, onChange, onClick }}>
-                <Header context={context} />
-                <Main colors={colors} />
-            </context.Provider>
+            <Header number={number} onChange={onChange} onClick={onClick} />
+            <Main
+                colors={colors}
+                clipboard={clipboard}
+                onClick={copyClick}
+                onMouseLeave={resetClipboard}
+            />
         </div>
     )
 }
