@@ -32,7 +32,10 @@ function App() {
     }
     function randomColor() {
         let randomColor = Math.floor(Math.random() * 16777215).toString(16)
-        randomColor = randomColor.length < 6 ? '0' + randomColor : randomColor
+
+        for (let i = 6 - randomColor.length; i > 0; i--) {
+            randomColor = '0' + randomColor
+        }
 
         return '#' + randomColor
     }
@@ -56,8 +59,8 @@ function App() {
             <Main
                 colors={colors}
                 clipboard={clipboard}
-                onClick={copyClick}
-                onMouseLeave={resetClipboard}
+                copyClick={copyClick}
+                resetClipboard={resetClipboard}
             />
         </div>
     )

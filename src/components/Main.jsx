@@ -11,7 +11,7 @@ function generateColorStyle(colorString) {
     }
 }
 
-function Main({ colors, clipboard, onClick, onMouseLeave }) {
+function Main({ colors, clipboard, copyClick, resetClipboard }) {
     return (
         <main>
             {colors.map((color, index) => {
@@ -22,12 +22,12 @@ function Main({ colors, clipboard, onClick, onMouseLeave }) {
                         className="color-card"
                         style={style}
                         key={index}
-                        onMouseLeave={onMouseLeave}
+                        onMouseLeave={resetClipboard}
                     >
                         <small>{color}</small>
                         <div
                             className={clipboard}
-                            onClick={() => onClick(color)}
+                            onClick={() => copyClick(color)}
                         >
                             <i className="fas fa-clipboard "></i>
                         </div>
